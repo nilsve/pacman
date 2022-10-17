@@ -1,0 +1,28 @@
+{
+    "rows": [
+        "XXXXXXXXXXXXXX  XXXXXXXXXXXXXX",
+        "X     X      X  X      X     X",
+        "X XXX X XXXX X  X XXXX X XXX X",
+        "X                            X",
+        "X XXX X XXX XXXXXX XXX X XXX X",
+        "X     X     XXXXXX     X     X",
+        "XXXXX XXXX XXXXXXXX XXXX XXXXX",
+        "XXXXX XXXX XXXXXXXX XXXX XXXXX",
+        "    X        XXXX        X    ",
+        "    X XXXXXX XXXX XXXXXX X    ",
+        "    X                    X    ",
+        "XXXXX XXXX XXX  XXX XXXX XXXXX",
+        "      XXXX X      X XXXX      ",
+        "XXXXX XXXX XXXXXXXX XXXX XXXXX",
+        "    X        XXXX        X    ",
+        "    X XXXXXX XXXX XXXXXX X    ",
+        "    X                    X    ",
+        "XXXXX XXXX XXXXXXXX XXXX XXXXX",
+        "X     X     XXXXXX     X     X",
+        "X XXX X XXX XXXXXX XXX X XXX X",
+        "X                            X",
+        "X XXX X XXXX X  X XXXX X XXX X",
+        "X     X      X  X      X     X",
+        "XXXXXXXXXXXXXX  XXXXXXXXXXXXXX"
+    ]
+}

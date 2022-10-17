@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "map_parser",
+    "game"
+]
+
+# For bevy
+resolver = "2"
