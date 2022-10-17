@@ -1,6 +1,5 @@
 use bevy::prelude::*;
 use bevy::window::CursorIcon::Default;
-use bevy_tiled_camera::TiledCameraBundle;
 use crate::player::components::Player;
 
 pub fn spawn_camera(mut commands: Commands) {

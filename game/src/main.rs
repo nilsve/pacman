@@ -15,6 +15,7 @@ mod camera;
 mod graphics;
 mod player;
 mod entity;
+mod stages;
 
 fn main() {
     let map = include_str!("./map1.json");

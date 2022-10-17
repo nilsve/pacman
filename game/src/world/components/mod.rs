@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_inspector_egui::{Inspectable};
 
 
-#[derive(Component, Reflect, Default)]
+#[derive(Component, Reflect, Default, Copy, Clone)]
 #[reflect(Component)]
 pub struct Position {
     pub(crate) x: f32,

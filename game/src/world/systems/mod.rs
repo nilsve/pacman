@@ -19,7 +19,7 @@ impl TileTypeResolver for TileData {
     }
 }
 
-pub fn setup_world(
+pub fn load_tiles(
     mut commands: Commands,
     mut map: ResMut<Map>,
     pacman_textures: Res<PacmanSheet>,
