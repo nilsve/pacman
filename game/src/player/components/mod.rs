@@ -1,7 +1,7 @@
-use std::f32::consts::PI;
+
 use bevy::prelude::*;
-use crate::world::components::Position;
-use crate::entity::components::{Entity, EntityDirection};
+use crate::world::components::{EntityPosition, TilePosition};
+use crate::entity::components::{Entity, CurrentDirection, DirectionChange};
 
 #[derive(Component, Reflect, Default)]
 #[reflect(Component)]
@@ -11,8 +11,10 @@ pub struct Player;
 pub struct PlayerBundle {
     pub entity: Entity,
     pub player: Player,
-    pub position: Position,
-    pub direction: EntityDirection,
+    pub position: EntityPosition,
+    pub next_tile_position: TilePosition,
+    pub direction: CurrentDirection,
+    pub next_direction: DirectionChange,
 
     #[bundle]
     pub sprite_sheet_bundle: SpriteSheetBundle,

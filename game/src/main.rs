@@ -2,7 +2,7 @@ use bevy::app::App;
 use bevy::DefaultPlugins;
 use bevy::render::texture::{ImageSampler, ImageSettings};
 use bevy_inspector_egui::WorldInspectorPlugin;
-use map_parser::GameMap;
+
 use crate::camera::plugin::CameraPlugin;
 use crate::entity::plugin::EntityPlugin;
 use crate::graphics::plugin::GraphicsPlugin;
@@ -15,7 +15,6 @@ mod camera;
 mod graphics;
 mod player;
 mod entity;
-mod stages;
 
 fn main() {
     let map = include_str!("./map1.json");

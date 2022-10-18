@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use crate::graphics::data::PacmanSheet;
-use crate::world::components::Position;
+use crate::world::components::EntityPosition;
 
 const TILE_SIZE: f32 = 16.0;
 
@@ -18,7 +18,7 @@ pub fn load_textures(
 }
 
 pub fn sync_positions(
-    mut query: Query<(&mut Transform, &Position), Changed<Position>>
+    mut query: Query<(&mut Transform, &EntityPosition), Changed<EntityPosition>>
 ) {
     for (mut transform, position) in query.iter_mut() {
         transform.translation.x = position.x * TILE_SIZE;

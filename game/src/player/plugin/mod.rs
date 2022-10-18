@@ -1,5 +1,5 @@
 use bevy::prelude::*;
-use bevy_inspector_egui::RegisterInspectable;
+
 use crate::player::components::Player;
 use crate::player::systems::{create_player, handle_input};
 
@@ -10,7 +10,7 @@ impl Plugin for PlayerPlugin {
         app
             .register_type::<Player>()
             .register_type::<Direction>()
-            .add_startup_system(create_player)
+            .add_system(create_player)
             .add_system(handle_input);
     }
 }

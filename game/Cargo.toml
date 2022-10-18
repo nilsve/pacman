@@ -9,6 +9,7 @@ edition = "2021"
 map_parser = { path = "../map_parser" }
 bevy = { version = "0.8.1", features = ["dynamic"] }
 bevy-inspector-egui = "0.13.0"
+iyes_loopless = "0.7.1"
 
 [profile.dev]
 opt-level = 1

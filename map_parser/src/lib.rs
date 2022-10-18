@@ -25,11 +25,11 @@ pub struct GameMap {
 }
 
 impl GameMap {
-    pub fn from_str(map: &str) -> Result<GameMap> {
+    pub fn load_from_string(map: &str) -> Result<GameMap> {
         let file: GameMapFile = serde_json::from_str(map)?;
 
         Ok(GameMap {
-            tiles: file.rows.into_iter().map(|line| line.chars().map(|tile_type| TileData::from_type(tile_type)).collect()).collect()
+            tiles: file.rows.into_iter().map(|line| line.chars().map(TileData::from_type).collect()).collect()
         })
     }
 }

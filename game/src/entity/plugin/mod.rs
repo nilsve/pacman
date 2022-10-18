@@ -1,7 +1,8 @@
 use bevy::prelude::*;
+use bevy::time::FixedTimestep;
 use bevy_inspector_egui::RegisterInspectable;
 use crate::entity::components::EntityDirections;
-use crate::entity::systems::{change_entity_sprite_direction, move_entity};
+use crate::entity::systems::{change_entity_sprite_direction, move_entity, update_entity_positions};
 
 pub struct EntityPlugin;
 
@@ -14,6 +15,16 @@ impl Plugin for EntityPlugin {
 
         app
             .add_system(change_entity_sprite_direction)
-            .add_system(move_entity);
+            .add_system_set(
+                SystemSet::new()
+                    .with_run_criteria(FixedTimestep::step(0.5))
+                    .with_system(move_entity)
+            )
+            .add_system(update_entity_positions);
+            // .add_system_set(
+            //     SystemSet::new()
+            //         .with_run_criteria(FixedTimestep::step(60.0 / 60.0))
+            //
+            // );
     }
 }
