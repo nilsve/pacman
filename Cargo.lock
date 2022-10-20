@@ -224,7 +224,6 @@ version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fea147ef1ebb92d41294cfad804c40de151b174c711ce6e0a4a40eba23eae1a4"
 dependencies = [
- "bevy_dylib",
  "bevy_internal",
 ]
 
@@ -384,15 +383,6 @@ dependencies = [
  "bevy_log",
  "bevy_time",
  "bevy_utils",
-]
-
-[[package]]
-name = "bevy_dylib"
-version = "0.8.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9b9ac2612b037838ab2ded3222a21ef56c36a1e0f04e6be97493d4532972f32b"
-dependencies = [
- "bevy_internal",
 ]
 
 [[package]]
@@ -1601,7 +1591,6 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "bevy-inspector-egui",
- "iyes_loopless",
  "map_parser",
 ]
 
@@ -1962,18 +1951,6 @@ name = "itoa"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6c8af84674fe1f223a982c933a0ee1086ac4d4052aa0fb8060c12c6ad838e754"
-
-[[package]]
-name = "iyes_loopless"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fec251a82c60be9e282aec12056fa153666d5730b21d124655d7c22114d342c8"
-dependencies = [
- "bevy_app",
- "bevy_ecs",
- "bevy_time",
- "bevy_utils",
-]
 
 [[package]]
 name = "jni"

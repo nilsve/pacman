@@ -1,10 +1,11 @@
 use std::f32::consts::PI;
 use bevy::prelude::*;
-use crate::entity::components::{EntityDirections, CurrentDirection, DirectionChange};
+use crate::entity::components::{CurrentDirection, DirectionChange, EntityDirections};
 use crate::Map;
-use crate::world::components::{EntityPosition, TilePosition};
+use crate::world::components::position::{EntityPosition, TilePosition};
 use crate::world::helpers::can_move_direction;
 
+// TODO: Move to graphics
 pub fn change_entity_sprite_direction(
     mut query: Query<(&mut Transform, &CurrentDirection), Changed<CurrentDirection>>
 ) {
@@ -67,5 +68,5 @@ fn find_new_direction(map: &Res<Map>, current_direction: &EntityDirections, next
     }.iter()
         .find(|direction| {
             can_move_direction(&map, &next_position, &direction)
-        }).map(|direction| *direction)
+        }).copied()
 }

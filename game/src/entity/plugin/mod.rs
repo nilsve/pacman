@@ -21,10 +21,5 @@ impl Plugin for EntityPlugin {
                     .with_system(move_entity)
             )
             .add_system(update_entity_positions);
-            // .add_system_set(
-            //     SystemSet::new()
-            //         .with_run_criteria(FixedTimestep::step(60.0 / 60.0))
-            //
-            // );
     }
 }

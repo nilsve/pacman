@@ -1,23 +1,25 @@
 use bevy::prelude::*;
 use bevy_inspector_egui::RegisterInspectable;
-use crate::world::components::{EntityPosition, TileType, TileTypes};
-use crate::world::systems::load_tiles;
+use crate::world::components::candy::Candy;
+use crate::world::components::position::{EntityPosition, TilePosition};
 
-use iyes_loopless::prelude::*;
-use crate::world::events::MapLoaded;
+use crate::world::events::{TilesLoaded, WorldLoaded};
+use crate::world::systems::load_tiles::setup_tiles;
+use crate::world::systems::setup_candy::setup_candy;
+use crate::world::systems::setup_world;
 
 pub struct WorldPlugin;
 
 impl Plugin for WorldPlugin {
     fn build(&self, app: &mut App) {
-        #[cfg(debug_assertions)]
-        app.register_inspectable::<TileTypes>();
-
         app
-            .add_event::<MapLoaded>()
-            .add_startup_system(load_tiles)
-            // .add_startup_system(setup_candy)
-            .register_type::<TileType>()
-            .register_type::<EntityPosition>();
+            .add_event::<WorldLoaded>()
+            .add_event::<TilesLoaded>()
+            .add_startup_system(setup_world)
+            .add_system(setup_tiles)
+            .add_system(setup_candy)
+            .register_type::<Candy>()
+            .register_type::<EntityPosition>()
+            .register_type::<TilePosition>();
     }
 }

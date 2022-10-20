@@ -1,2 +1,5 @@
 #[derive(Debug)]
-pub struct MapLoaded;
+pub struct WorldLoaded;
+
+#[derive(Debug)]
+pub struct TilesLoaded;

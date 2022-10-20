@@ -1,17 +1,18 @@
 use bevy::prelude::*;
-use crate::entity::components::{EntityDirections, DirectionChange};
+use crate::entity::components::{DirectionChange, EntityDirections};
 use crate::graphics::data::PacmanSheet;
 use crate::Map;
 use crate::player::components::{Player, PlayerBundle};
-use crate::world::components::{EntityPosition, TilePosition, TileType, TileTypes};
-use crate::world::events::MapLoaded;
+use crate::world::components::position::{EntityPosition, TilePosition};
+use crate::world::components::tile::PlayerSpawn;
+use crate::world::events::TilesLoaded;
 use crate::world::helpers::can_move_direction;
 
 pub fn create_player(
     mut commands: Commands,
     pacman_sheet: Res<PacmanSheet>,
-    query: Query<(&EntityPosition, &TileType)>,
-    event: EventReader<MapLoaded>
+    player_spawn_query: Query<&TilePosition, With<PlayerSpawn>>,
+    event: EventReader<TilesLoaded>
 ) {
     if event.is_empty() {
         return
@@ -20,16 +21,12 @@ pub fn create_player(
     event.clear();
     println!("Create player");
 
-    let (position, _) = query.iter()
-        .find(|(_, tile_type)| {
-            tile_type.0 == TileTypes::PlayerSpawn
-        })
-        .expect("Player spawn not found");
+    let position = player_spawn_query.iter().next().expect("No player spawn found");
 
     commands.spawn_bundle(PlayerBundle {
         name: Name::new("Player"),
-        position: *position,
-        next_tile_position: position.into(),
+        position: position.into(),
+        next_tile_position: *position,
         sprite_sheet_bundle: SpriteSheetBundle {
             texture_atlas: pacman_sheet.0.clone(),
             sprite: TextureAtlasSprite::new(0),

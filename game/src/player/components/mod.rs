@@ -1,7 +1,7 @@
 
 use bevy::prelude::*;
-use crate::world::components::{EntityPosition, TilePosition};
-use crate::entity::components::{Entity, CurrentDirection, DirectionChange};
+use crate::entity::components::{CurrentDirection, DirectionChange, Entity};
+use crate::world::components::position::{EntityPosition, TilePosition};
 
 #[derive(Component, Reflect, Default)]
 #[reflect(Component)]

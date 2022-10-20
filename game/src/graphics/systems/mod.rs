@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 use crate::graphics::data::PacmanSheet;
-use crate::world::components::EntityPosition;
+use crate::world::components::position::EntityPosition;
 
 const TILE_SIZE: f32 = 16.0;
 
