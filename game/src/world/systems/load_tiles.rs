@@ -1,10 +1,11 @@
 use bevy::prelude::*;
-use bevy::utils::{HashMap, HashSet};
+use bevy::utils::{HashSet};
 
 use crate::graphics::data::PacmanSheet;
 use crate::Map;
+use crate::world::components::candy::Candy;
 use crate::world::components::position::{EntityPosition, TilePosition};
-use crate::world::components::tile::{PlayerSpawn, Tile, Tiles, TilesBundle, TileTypes, Wall};
+use crate::world::components::tile::{PlayerSpawn, Tile, TilesBundle, TileTypes, Wall};
 use crate::world::components::World;
 use crate::world::events::{TilesLoaded, WorldLoaded};
 use crate::world::systems::TileTypeResolver;
@@ -13,7 +14,7 @@ pub fn setup_tiles(
     mut commands: Commands,
     mut map: ResMut<Map>,
     world_query: Query<(Entity), With<World>>,
-    mut world_loaded: EventReader<WorldLoaded>,
+    world_loaded: EventReader<WorldLoaded>,
     mut event_map_loaded: EventWriter<TilesLoaded>,
     pacman_textures: Res<PacmanSheet>
 ) {
@@ -52,26 +53,40 @@ pub fn setup_tiles(
                                 position,
                             });
 
-                        if tile_type == TileTypes::Wall {
-                            child
-                                .insert(Wall)
-                                .insert_bundle(SpriteSheetBundle {
-                                    texture_atlas: pacman_textures.0.clone(),
-                                    sprite: TextureAtlasSprite::new(9),
-                                    transform: Transform {
-                                        scale: Vec3::new(1.1, 1.1, 1.0),
-                                        ..default()
-                                    },
-                                    ..Default::default()
-                                });
-                        } else if tile_type == TileTypes::PlayerSpawn {
-                            child.insert(PlayerSpawn);
-                        }
+                        match tile_type {
+                            TileTypes::Wall => {
+                                child
+                                    .insert(Wall)
+                                    .insert_bundle(SpriteSheetBundle {
+                                        texture_atlas: pacman_textures.0.clone(),
+                                        sprite: TextureAtlasSprite::new(1),
+                                        transform: Transform {
+                                            scale: Vec3::new(1.1, 1.1, 1.0),
+                                            ..default()
+                                        },
+                                        ..Default::default()
+                                    });
+                            }
+                            TileTypes::Candy => {
+                                child.insert(Candy)
+                                    .insert_bundle(SpriteSheetBundle {
+                                        texture_atlas: pacman_textures.0.clone(),
+                                        sprite: TextureAtlasSprite::new(2),
+                                        ..Default::default()
+                                    });
+                                walkable_positions.insert(position);
+                            }
+                            TileTypes::PlayerSpawn => {
+                                child.insert(PlayerSpawn);
+                                walkable_positions.insert(position);
+                            }
+                        };
                     } else {
                         walkable_positions.insert(position);
                     }
                 })
             });
+            map.walkable_positions = walkable_positions;
         }).id();
 
     commands.entity(world_id).push_children(&[tiles]);

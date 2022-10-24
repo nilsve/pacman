@@ -35,5 +35,3 @@ impl Deref for DirectionChange {
     }
 }
 
-#[derive(Component, Default)]
-pub struct Entity;

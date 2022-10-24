@@ -7,12 +7,11 @@ pub struct Treats;
 
 #[derive(Bundle, Default)]
 pub struct TreatsBundle {
-    pub world: Treats,
+    pub treats: Treats,
 
     #[bundle]
-    spatial_bundle: SpatialBundle,
+    pub spatial_bundle: SpatialBundle,
 }
-
 
 #[derive(Component, Reflect, Default)]
 #[reflect(Component)]

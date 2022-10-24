@@ -1,9 +1,9 @@
 {
     "rows": [
         "XXXXXXXXXXXXXX  XXXXXXXXXXXXXX",
-        "X     X      X  X      X     X",
+        "X CCC X      X  X      X CCC X",
         "X XXX X XXXX X  X XXXX X XXX X",
-        "X                            X",
+        "X CCC                    CCC X",
         "X XXX X XXX XXXXXX XXX X XXX X",
         "X     X     XXXXXX     X     X",
         "XXXXX XXXX XXXXXXXX XXXX XXXXX",

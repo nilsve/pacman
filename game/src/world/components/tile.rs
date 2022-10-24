@@ -23,6 +23,7 @@ pub struct Tile {
 #[derive(Eq, PartialEq)]
 pub enum TileTypes {
     Wall,
+    Candy,
     PlayerSpawn,
 }
 

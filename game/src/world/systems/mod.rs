@@ -1,5 +1,4 @@
 pub mod load_tiles;
-pub mod setup_candy;
 
 use bevy::prelude::*;
 use map_parser::TileData;
@@ -16,6 +15,7 @@ impl TileTypeResolver for TileData {
         match self.tile_type {
             'X' => Some(TileTypes::Wall),
             'P' => Some(TileTypes::PlayerSpawn),
+            'C' => Some(TileTypes::Candy),
             _ => None,
         }
     }
